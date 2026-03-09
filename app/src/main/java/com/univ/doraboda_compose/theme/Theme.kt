@@ -25,7 +25,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun Doraboda_ComposeTheme(
+fun Dora_ComposeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
