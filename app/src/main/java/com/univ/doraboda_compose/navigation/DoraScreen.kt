@@ -11,4 +11,13 @@ sealed class DoraScreen {
     object DailyWrite : DoraScreen()
     @Serializable
     object Settings : DoraScreen()
+
+    @Serializable
+    object DoraCalendar : DoraScreen()
+
+    @Serializable
+    object DoraMusicPlayer : DoraScreen()
+
+    @Serializable
+    object DoraData : DoraScreen()
 }
