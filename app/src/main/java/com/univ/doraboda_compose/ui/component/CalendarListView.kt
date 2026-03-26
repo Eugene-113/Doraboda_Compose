@@ -1,6 +1,5 @@
 package com.univ.doraboda_compose.ui.component
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,7 +10,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import com.univ.doraboda_compose.theme.Dora_ComposeTheme
 import com.univ.doraboda_compose.theme.MondayRed
 import com.univ.doraboda_compose.theme.WeekBlack
-import com.univ.doraboda_compose.ui.main.MainScreen
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.TextStyle
