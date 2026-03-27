@@ -4,18 +4,27 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.dropShadow
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.univ.doraboda_compose.navigation.DoraScreen
 import com.univ.doraboda_compose.theme.Dora_ComposeTheme
+import com.univ.doraboda_compose.theme.GreyYellow90
+import com.univ.doraboda_compose.theme.GreyYellow95
+import com.univ.doraboda_compose.theme.WeekBlack
 import com.univ.doraboda_compose.ui.calendar.CalendarScreen
 
 @Composable
@@ -56,7 +65,18 @@ fun DoraApp(){
 
 @Composable
 fun DoraBottomBar(){
-    BottomAppBar(containerColor = MaterialTheme.colorScheme.surface) {
+    BottomAppBar(
+        containerColor = MaterialTheme.colorScheme.surface,
+        modifier = Modifier
+            .dropShadow(
+                shape = RoundedCornerShape(30.dp),
+                shadow = Shadow(
+                    radius = 10.dp,
+                    spread = 6.dp,
+                    color = GreyYellow90
+                )
+            )
+    ) {
 
     }
 }

@@ -60,4 +60,7 @@ dependencies {
 
     //serialization
     implementation(libs.kotlinx.serialization.json)
+
+    //constraint layout
+    implementation(libs.androidx.constraintLayout)
 }
