@@ -75,7 +75,7 @@ fun ListPicker(
         items(itemsCount){ index ->
             Text(
                 text = itemList[index % itemList.size].toString(),
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.titleMedium,
                 maxLines = 1,
                 textAlign = TextAlign.Center,
                 modifier = Modifier

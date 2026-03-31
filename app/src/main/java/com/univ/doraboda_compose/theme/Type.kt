@@ -22,6 +22,12 @@ val Typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = 0.15.sp
     ),
+    titleMedium = defaultTextStyle.copy(
+        fontWeight = FontWeight.Medium,
+        fontSize = 18.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.15.sp
+    ),
     bodyLarge = defaultTextStyle.copy(
         fontSize = 16.sp,
         lineHeight = 24.sp,

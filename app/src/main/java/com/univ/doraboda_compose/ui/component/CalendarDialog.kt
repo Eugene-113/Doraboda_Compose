@@ -98,7 +98,7 @@ fun CalendarDialog(
 
                     Text(
                         text = "년",
-                        style = MaterialTheme.typography.bodyLarge,
+                        style = MaterialTheme.typography.titleMedium,
                         modifier = Modifier
                             .padding(10.dp)
                     )
@@ -123,7 +123,7 @@ fun CalendarDialog(
 
                     Text(
                         text = "월",
-                        style = MaterialTheme.typography.bodyLarge,
+                        style = MaterialTheme.typography.titleMedium,
                         modifier = Modifier
                             .padding(10.dp)
                     )

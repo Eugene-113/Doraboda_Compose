@@ -56,7 +56,7 @@ fun PickerTextField(
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Number
         ),
-        textStyle = TextStyle(textAlign = TextAlign.Center)
+        textStyle = MaterialTheme.typography.titleMedium.copy(textAlign = TextAlign.Center)
     ){ innerTextField ->
         Row(
             modifier = Modifier
