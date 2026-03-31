@@ -2,6 +2,7 @@ package com.univ.doraboda_compose.ui.calendar
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -34,15 +35,10 @@ import java.time.format.DateTimeFormatter
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CalendarTopBar(
-    pagerState: PagerState,
-    minDate: LocalDate = LocalDate.of(2000, 1, 1)
+    thisDate: LocalDate,
+    onClick: () -> Unit
 ){
     val format = DateTimeFormatter.ofPattern("yyyy년 MM월")
-    var thisDateString by remember { mutableStateOf("") }
-    LaunchedEffect(pagerState.currentPage) {
-        val date = minDate.plusMonths(pagerState.currentPage.toLong())
-        thisDateString = date.format(format)
-    }
     TopAppBar(
         modifier = Modifier
             .fillMaxWidth(),
@@ -64,10 +60,13 @@ fun CalendarTopBar(
                     contentDescription = null
                 )
                 Text(
-                    text = thisDateString,
+                    text = thisDate.format(format),
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp,
                     modifier = Modifier
+                        .clickable{
+                            onClick()
+                        }
                         .constrainAs(arrow){
                             start.linkTo(parent.start)
                             end.linkTo(parent.end)
@@ -96,10 +95,10 @@ fun CalendarTopBar(
 @Preview(showBackground = true)
 @Composable
 fun BarPreview() {
-
     Dora_ComposeTheme{
         CalendarTopBar(
-            pagerState = rememberPagerState(initialPage = 1, pageCount = {3})
-        )
+            thisDate = LocalDate.of(2000, 1, 1)
+        ){
+        }
     }
 }

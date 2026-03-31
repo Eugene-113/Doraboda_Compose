@@ -18,19 +18,23 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun PickerTextField(
     initText: String,
-    onTextChanged: (String) -> Unit
+    onFocusCancel: (String) -> Unit
 ){
     var thisText by remember { mutableStateOf(initText) }
-    LaunchedEffect(thisText) {
-        onTextChanged(thisText)
-    }
+    val focusRequester = remember { FocusRequester() }
+    var focusRequesterOn by remember { mutableStateOf(false) }
 
     BasicTextField(
         value = thisText,
@@ -41,10 +45,18 @@ fun PickerTextField(
                         },
         modifier = Modifier
             .width(80.dp)
-            .height(20.dp),
+            .height(20.dp)
+            .focusRequester(focusRequester)
+            .onFocusChanged{ fState ->
+                if(!fState.isFocused && focusRequesterOn){
+                    onFocusCancel(thisText)
+                }
+            }
+        ,
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Number
-        )
+        ),
+        textStyle = TextStyle(textAlign = TextAlign.Center)
     ){ innerTextField ->
         Row(
             modifier = Modifier
@@ -56,6 +68,11 @@ fun PickerTextField(
         ) {
             innerTextField()
         }
+    }
+
+    LaunchedEffect(focusRequester) {
+        focusRequester.requestFocus()
+        focusRequesterOn = true
     }
 }
 

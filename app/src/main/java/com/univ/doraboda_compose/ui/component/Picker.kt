@@ -29,18 +29,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun <T> ListPicker(
-    itemList: List<T>,
+fun ListPicker(
+    itemList: List<Int>,
     itemsCount: Int = itemList.size * 4,
     visibleItemNumber: Int = 3,
-    indexChanged: (T) -> Unit,
+    initIndex: Int = itemList.size * 2 - 1,
+    indexChanged: (Int) -> Unit,
     onPickerClicked: () -> Unit
 ) {
-    val firstVisibleIndex = itemList.size * 2 - 1
     val focusedItemOffset = visibleItemNumber / 2
     val itemHeight = 20
 
-    val listState = rememberLazyListState(initialFirstVisibleItemIndex = firstVisibleIndex)
+    val listState = rememberLazyListState(initialFirstVisibleItemIndex = initIndex)
     val flingBehavior = rememberSnapFlingBehavior(lazyListState = listState)
 
     val fadingGradient = remember {
@@ -55,7 +55,7 @@ fun <T> ListPicker(
         derivedStateOf { listState.firstVisibleItemIndex }
     }
     LaunchedEffect(thisIndex) {
-        indexChanged(itemList[thisIndex + focusedItemOffset])
+        indexChanged(itemList[(thisIndex + focusedItemOffset) % itemList.size])
     }
 
     LazyColumn(
@@ -75,10 +75,13 @@ fun <T> ListPicker(
         items(itemsCount){ index ->
             Text(
                 text = itemList[index % itemList.size].toString(),
+                style = MaterialTheme.typography.bodyMedium,
                 maxLines = 1,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .height(itemHeight.dp)
+                ,
                 color = Color.Black
             )
         }
@@ -94,9 +97,10 @@ fun PreviewNumberPicker() {
                 .fillMaxWidth()
                 .fillMaxHeight()
         ){
-            ListPicker<Int>(
+            ListPicker(
                 itemList = listOf(0, 1, 2, 3, 4),
-                indexChanged = { index -> }
+                indexChanged = { index -> },
+                initIndex = 0
             ){}
         }
     }
