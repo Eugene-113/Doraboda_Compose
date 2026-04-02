@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -36,6 +38,7 @@ android {
 dependencies {
     //modules
     implementation(project(":domain"))
+    implementation(project(":core:ui"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -52,4 +55,14 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    //navigation
+    implementation(libs.navigation)
+    androidTestImplementation(libs.navigation.testing) //Testing
+
+    //serialization
+    implementation(libs.kotlinx.serialization.json)
+
+    //constraint layout
+    implementation(libs.androidx.constraintLayout)
 }

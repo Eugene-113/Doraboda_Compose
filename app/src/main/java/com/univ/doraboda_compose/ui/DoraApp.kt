@@ -19,8 +19,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.univ.calendar.ui.CalendarScreen
 import com.univ.doraboda_compose.navigation.DoraScreen
-import com.univ.doraboda_compose.theme.Dora_ComposeTheme
-import com.univ.doraboda_compose.theme.GreyYellow90
+import com.univ.ui.theme.Dora_ComposeTheme
+import com.univ.ui.theme.GreyYellow90
 
 @Composable
 fun DoraApp(){

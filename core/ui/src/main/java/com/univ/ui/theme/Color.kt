@@ -1,4 +1,4 @@
-package com.univ.doraboda_compose.theme
+package com.univ.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

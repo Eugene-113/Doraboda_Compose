@@ -21,10 +21,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.univ.doraboda_compose.theme.Dora_ComposeTheme
-import com.univ.doraboda_compose.theme.MondayRed
-import com.univ.doraboda_compose.theme.TodayYellow
-import com.univ.doraboda_compose.theme.WeekBlack
+import com.univ.ui.theme.Dora_ComposeTheme
+import com.univ.ui.theme.MondayRed
+import com.univ.ui.theme.TodayYellow
+import com.univ.ui.theme.WeekBlack
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.TextStyle

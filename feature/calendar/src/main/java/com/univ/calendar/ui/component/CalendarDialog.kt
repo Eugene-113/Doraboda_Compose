@@ -31,8 +31,8 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.univ.doraboda_compose.theme.Dora_ComposeTheme
-import com.univ.doraboda_compose.theme.White100
+import com.univ.ui.theme.Dora_ComposeTheme
+import com.univ.ui.theme.White100
 import java.time.LocalDate
 
 @Composable
