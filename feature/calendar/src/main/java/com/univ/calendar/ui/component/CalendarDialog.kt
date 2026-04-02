@@ -1,4 +1,4 @@
-package com.univ.doraboda_compose.ui.component
+package com.univ.calendar.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

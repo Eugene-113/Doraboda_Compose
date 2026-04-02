@@ -1,4 +1,4 @@
-package com.univ.doraboda_compose.ui.calendar
+package com.univ.calendar.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.univ.doraboda_compose.theme.Dora_ComposeTheme
 import com.univ.doraboda_compose.theme.White100
-import com.univ.doraboda_compose.ui.component.CalendarDialog
+import com.univ.calendar.ui.component.CalendarDialog
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit

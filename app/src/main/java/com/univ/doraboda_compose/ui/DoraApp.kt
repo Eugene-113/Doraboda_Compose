@@ -11,21 +11,16 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.dropShadow
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.univ.calendar.ui.CalendarScreen
 import com.univ.doraboda_compose.navigation.DoraScreen
 import com.univ.doraboda_compose.theme.Dora_ComposeTheme
 import com.univ.doraboda_compose.theme.GreyYellow90
-import com.univ.doraboda_compose.theme.GreyYellow95
-import com.univ.doraboda_compose.theme.WeekBlack
-import com.univ.doraboda_compose.ui.calendar.CalendarScreen
 
 @Composable
 fun DoraApp(){
