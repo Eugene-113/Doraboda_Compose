@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Doraboda_Compose"
 include(":app")
- 
+include(":data")
+include(":domain")
+include(":feature:calendar")
