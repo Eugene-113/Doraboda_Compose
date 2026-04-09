@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -68,4 +70,8 @@ dependencies {
 
     //constraint layout
     implementation(libs.androidx.constraintLayout)
+
+    //hilt
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
 }
