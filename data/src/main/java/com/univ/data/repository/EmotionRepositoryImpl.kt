@@ -8,9 +8,10 @@ import com.univ.domain.model.EmotionData
 import com.univ.domain.repository.EmotionRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 import kotlin.collections.map
 
-class EmotionRepositoryImpl(val dataSource: EmotionDataSource) : EmotionRepository {
+class EmotionRepositoryImpl @Inject constructor(val dataSource: EmotionDataSource) : EmotionRepository {
     override fun getAllEmotion(): Flow<List<EmotionData>> {
         return dataSource.getAllEmotion().map { model -> model.map(Emotion::toDomain) }
     }

@@ -2,8 +2,9 @@ package com.univ.data.db.memo
 
 import com.univ.data.model.Memo
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class MemoDataSourceImpl(private val dao: MemoDao) : MemoDataSource {
+class MemoDataSourceImpl @Inject constructor(private val dao: MemoDao) : MemoDataSource {
     override fun getAllMemo(): Flow<List<Memo>> {
         return dao.getAllMemo()
     }

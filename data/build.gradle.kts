@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -49,4 +50,8 @@ dependencies {
 
     //paging
     implementation(libs.androidx.paging)
+
+    //hilt
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
 }

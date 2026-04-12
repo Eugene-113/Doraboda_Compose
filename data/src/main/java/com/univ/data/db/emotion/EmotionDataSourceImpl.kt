@@ -2,8 +2,9 @@ package com.univ.data.db.emotion
 
 import com.univ.data.model.Emotion
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class EmotionDataSourceImpl(private val dao: EmotionDao): EmotionDataSource {
+class EmotionDataSourceImpl @Inject constructor(private val dao: EmotionDao): EmotionDataSource {
     override fun getAllEmotion(): Flow<List<Emotion>> {
         return dao.getAllEmotion()
     }
