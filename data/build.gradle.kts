@@ -1,19 +1,13 @@
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt)
+    alias(libs.plugins.doraPlug.library)
+    alias(libs.plugins.doraPlug.android.hilt)
+    alias(libs.plugins.doraPlug.android.room)
 }
 
 android {
     namespace = "com.univ.data"
-    compileSdk {
-        version = release(36)
-    }
 
     defaultConfig {
-        minSdk = 26
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -25,10 +19,6 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
     }
 }
 
@@ -42,16 +32,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    //room
-    implementation(libs.androidx.room)
-    ksp(libs.androidx.room.ktx)
-    implementation(libs.androidx.room.ktx)
-
-    //paging
-    implementation(libs.androidx.paging)
-
-    //hilt
-    implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
 }
