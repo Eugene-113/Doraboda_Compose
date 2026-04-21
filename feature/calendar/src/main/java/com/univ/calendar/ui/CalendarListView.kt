@@ -1,6 +1,7 @@
 package com.univ.calendar.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -109,6 +110,7 @@ fun DayView(day: Int, isToday: Boolean){
         modifier = Modifier
             .height(100.dp)
             .background(color = (if(isToday) TodayYellow else Color.Transparent))
+            .clickable(onClick = {})
         ,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

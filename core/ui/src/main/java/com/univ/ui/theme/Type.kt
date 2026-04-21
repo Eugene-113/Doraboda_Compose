@@ -18,7 +18,7 @@ val defaultTextStyle = TextStyle(
 val Typography = Typography(
     titleLarge = defaultTextStyle.copy(
         fontWeight = FontWeight.Medium,
-        fontSize = 22.sp,
+        fontSize = 30.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.15.sp
     ),

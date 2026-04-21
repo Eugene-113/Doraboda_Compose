@@ -28,7 +28,7 @@ fun CalendarTopBar(
     thisDate: LocalDate,
     onClick: () -> Unit
 ){
-    val format = DateTimeFormatter.ofPattern("yyyy년 MM월")
+    val format = DateTimeFormatter.ofPattern("yyyy년 M월")
     TopAppBar(
         modifier = Modifier
             .fillMaxWidth(),

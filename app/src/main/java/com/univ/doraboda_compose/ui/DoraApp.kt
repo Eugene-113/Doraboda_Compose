@@ -21,6 +21,7 @@ import com.univ.calendar.ui.CalendarScreen
 import com.univ.doraboda_compose.navigation.DoraScreen
 import com.univ.ui.theme.Dora_ComposeTheme
 import com.univ.ui.theme.GreyYellow90
+import com.univ.ui.theme.TodayYellow
 
 @Composable
 fun DoraApp(){
@@ -32,7 +33,7 @@ fun DoraApp(){
             Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .background(color = MaterialTheme.colorScheme.background)
+                .background(color = TodayYellow)
         ){
             NavHost(
                 navController = doraNavController,
