@@ -27,6 +27,7 @@ fun CalendarScreen(
     currentDate: LocalDate = LocalDate.now(),
     minDate: LocalDate = LocalDate.of(2000, 1, 1),
     maxDate: LocalDate = LocalDate.of(2999, 12, 1),
+    toDailyDetail: (LocalDate, String?) -> Unit
 ){
     val scope = rememberCoroutineScope()
     var dialogState by remember { mutableStateOf(false) }
@@ -51,7 +52,8 @@ fun CalendarScreen(
             currentDate = currentDate,
             minDate = minDate,
             maxDate = maxDate,
-            pagerState = pagerState
+            pagerState = pagerState,
+            toDailyDetail = toDailyDetail
         )
     }
     if(dialogState){
@@ -73,6 +75,6 @@ fun CalendarScreen(
 @Composable
 fun CalendarPreview() {
     Dora_ComposeTheme{
-        CalendarScreen()
+        CalendarScreen(toDailyDetail = {a, b -> })
     }
 }

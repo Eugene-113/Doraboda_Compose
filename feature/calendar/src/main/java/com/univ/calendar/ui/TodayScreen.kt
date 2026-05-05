@@ -36,8 +36,8 @@ import java.time.format.DateTimeFormatter
 fun TodayScreen(
     thisDate: LocalDate,
     thisEmotion: String?,
-    updateEmotion: () -> Unit,
-    deleteEmotion: () -> Unit
+    updateEmotion: () -> Unit = {},
+    deleteEmotion: () -> Unit = {}
 ) {
     val thisEmotionIndex = DoraEmotions.emotionNames.indexOf(thisEmotion)
     val emotionImage = DoraEmotions.emotionImgs[thisEmotionIndex]
@@ -110,11 +110,12 @@ fun TodayScreen(
             }
         }
     }
-    if(showModalSheet)
-    EmotionSelectScreen(defaultIndex = 0) { i ->
-        showModalSheet = false
-        if(thisEmotion != DoraEmotions.emotionNames[i%7]){
-            //if value changed, viewmodel insert
+    if(showModalSheet){
+        EmotionSelectScreen(defaultIndex = 0) { i ->
+            showModalSheet = false
+            if(thisEmotion != DoraEmotions.emotionNames[i%7]){
+                //if value changed, viewmodel insert
+            }
         }
     }
 }

@@ -40,7 +40,8 @@ fun CalendarListView(
     pagerState: PagerState = rememberPagerState(
         pageCount = { ChronoUnit.MONTHS.between(minDate, maxDate).toInt() + 1 },
         initialPage = (ChronoUnit.MONTHS.between(minDate, currentDate).toInt())
-    )
+    ),
+    toDailyDetail: (LocalDate, String?) -> Unit
 ){
     Column{
         WeekView()
@@ -52,7 +53,7 @@ fun CalendarListView(
             verticalAlignment = Alignment.Top
         ) { page ->
             val thisDate = minDate.plusMonths(page.toLong())
-            MonthView(thisDate = thisDate, currentDate)
+            MonthView(thisDate = thisDate, currentDate, toDailyDetail)
         }
     }
 }
@@ -60,7 +61,8 @@ fun CalendarListView(
 @Composable
 fun MonthView(
     thisDate: LocalDate,
-    currentDate: LocalDate
+    currentDate: LocalDate,
+    toDailyDetail: (LocalDate, String?) -> Unit
 ){
     val daysNumber = thisDate.lengthOfMonth()
     val firstDay = thisDate.dayOfWeek.value
@@ -78,7 +80,7 @@ fun MonthView(
         }
         items(daysNumber){ index ->
             val present = thisDate.withDayOfMonth(index + 1)
-            DayView(day = index + 1, isToday = present.compareTo(currentDate) == 0)
+            DayView(day = index + 1, isToday = present.compareTo(currentDate) == 0, toDailyDetail = toDailyDetail)
         }
     }
 }
@@ -105,12 +107,14 @@ fun WeekView(){
 }
 
 @Composable
-fun DayView(day: Int, isToday: Boolean){
+fun DayView(day: Int, isToday: Boolean, toDailyDetail: (LocalDate, String?) -> Unit){
     Column(
         modifier = Modifier
             .height(100.dp)
             .background(color = (if(isToday) TodayYellow else Color.Transparent))
-            .clickable(onClick = {})
+            .clickable(onClick = {
+                toDailyDetail(LocalDate.now(), "sad")
+            })
         ,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -126,6 +130,6 @@ fun DayView(day: Int, isToday: Boolean){
 @Composable
 fun CalendarListPreview() {
     Dora_ComposeTheme{
-        CalendarListView()
+        CalendarListView(){a, b -> }
     }
 }
