@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -26,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.univ.calendar.model.EmotionItem
 import com.univ.ui.DoraEmotions
 import com.univ.ui.R
 import com.univ.ui.theme.Dora_ComposeTheme
@@ -35,12 +35,13 @@ import java.time.format.DateTimeFormatter
 @Composable
 fun TodayScreen(
     thisDate: LocalDate,
-    thisEmotion: String?,
-    updateEmotion: () -> Unit = {},
+    defaultEmotion: String?,
+    insertEmotion: (EmotionItem) -> Unit = {},
     deleteEmotion: () -> Unit = {}
 ) {
-    val thisEmotionIndex = DoraEmotions.emotionNames.indexOf(thisEmotion)
-    val emotionImage = DoraEmotions.emotionImgs[thisEmotionIndex]
+    var thisEmotionIndex by remember{ mutableStateOf(
+        DoraEmotions.emotionNames.indexOf(defaultEmotion ?: "empty")) }
+    var emotionImage by remember(thisEmotionIndex){ mutableStateOf(DoraEmotions.emotionImgs[thisEmotionIndex]) }
     var showModalSheet by remember { mutableStateOf(false) }
     var selectedIndex by remember { mutableStateOf(1) }
     val format = DateTimeFormatter.ofPattern("yyyy년 M월 dd일")
@@ -111,10 +112,17 @@ fun TodayScreen(
         }
     }
     if(showModalSheet){
-        EmotionSelectScreen(defaultIndex = 0) { i ->
+        EmotionSelectScreen(defaultIndex = thisEmotionIndex) { i ->
             showModalSheet = false
-            if(thisEmotion != DoraEmotions.emotionNames[i%7]){
-                //if value changed, viewmodel insert
+            if(thisEmotionIndex != i%7){
+                thisEmotionIndex = i%7
+                if(i == 7){
+                    //delete
+                } else {
+//                    insertEmotion(EmotionItem(year = thisDate.year,
+//                        month = thisDate.monthValue, day = thisDate.dayOfMonth,
+//                        emotion = selectedEmotion))
+                }
             }
         }
     }
@@ -124,6 +132,6 @@ fun TodayScreen(
 @Composable
 fun TodayScreenPreview() {
     Dora_ComposeTheme{
-        TodayScreen(thisDate = LocalDate.now(), thisEmotion = "empty", updateEmotion = {}) { }
+        TodayScreen(thisDate = LocalDate.now(), defaultEmotion = "empty", insertEmotion = {}) { }
     }
 }

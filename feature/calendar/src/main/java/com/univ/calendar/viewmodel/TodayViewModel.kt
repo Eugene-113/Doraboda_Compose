@@ -13,15 +13,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TodayViewModel @Inject constructor(private val emotionRepository: EmotionRepository) : ViewModel() {
-    sealed class AddEmotionIntent{
-        data class DeleteEmotion(val time: Long): AddEmotionIntent()
-        data class InsertEmotion(val emotion: EmotionItem): AddEmotionIntent()
+    sealed class TodayIntent{
+        data class DeleteEmotion(val time: Long): TodayIntent()
+        data class InsertEmotion(val emotion: EmotionItem): TodayIntent()
     }
 
-    fun handleIntent(intent: AddEmotionIntent){
+    fun handleIntent(intent: TodayIntent){
         when(intent){
-            is AddEmotionIntent.InsertEmotion -> insertEmotion(intent.emotion)
-            is AddEmotionIntent.DeleteEmotion -> deleteEmotion(intent.time)
+            is TodayIntent.InsertEmotion -> insertEmotion(intent.emotion)
+            is TodayIntent.DeleteEmotion -> deleteEmotion(intent.time)
         }
     }
 

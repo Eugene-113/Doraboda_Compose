@@ -44,7 +44,7 @@ import java.time.LocalDate
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EmotionSelectScreen(defaultIndex: Int, onDismiss: (Int) -> Unit) {
-    var selectedIndex by remember { mutableStateOf(2) }
+    var selectedIndex by remember { mutableStateOf(defaultIndex) }
 
     ModalBottomSheet(onDismissRequest = { onDismiss(selectedIndex) },
         containerColor = TodayYellow

@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.shadow.Shadow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -23,12 +24,14 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.univ.calendar.ui.CalendarScreen
 import com.univ.calendar.ui.TodayScreen
+import com.univ.calendar.viewmodel.TodayViewModel
 import com.univ.doraboda_compose.navigation.DoraController
 import com.univ.doraboda_compose.navigation.DoraScreen
 import com.univ.ui.theme.Dora_ComposeTheme
 import com.univ.ui.theme.GreyYellow90
 import com.univ.ui.theme.TodayYellow
 import java.time.LocalDate
+import com.univ.calendar.viewmodel.TodayViewModel.TodayIntent
 
 @Composable
 fun DoraApp(){
@@ -64,9 +67,13 @@ fun DoraApp(){
 
                 composable<DoraScreen.DailyDetail> { backStackEntry ->
                     val data = backStackEntry.toRoute<DoraScreen.DailyDetail>()
+                    val viewModel = hiltViewModel<TodayViewModel>()
                     TodayScreen(thisDate =
                         LocalDate.of(data.year, data.month, data.day),
-                        data.thisEmotion
+                        defaultEmotion = data.thisEmotion,
+                        insertEmotion = { item ->
+                            viewModel.handleIntent(TodayIntent.InsertEmotion(item)) },
+                        deleteEmotion = {}
                     )
                 }
                 composable<DoraScreen.DailyWrite> {
